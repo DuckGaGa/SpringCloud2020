@@ -1,0 +1,33 @@
+server:
+  port: 7002
+
+spring:
+  application:
+    name: eureka-service7002
+
+eureka:
+  client:
+    #false指不会像注册中心注册自己
+    register-with-eureka: false
+    #false指自己本身就是注册中心，只需维护服务实例，并不需要去检索服务
+    fetchRegistry: false
+    service-url:
+      #设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址
+#      defaultZone: http://localhost:7001/eureka
+      # 集群搭建，RPC框架的核心：高可用，防止单点故障
+#      defaultZone: http://eureka7003.com:7003/eureka,http://eureka7001.com:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
+#  instance:
+#      instance-id: payment8001
+#      #\u8BBF\u95EE\u8DEF\u5F84\u53EF\u4EE5\u663E\u793AIP\u5730\u5740
+#      prefer-ip-address: true
+#      #Eureka\u5BA2\u6237\u7AEF\u5411\u670D\u52A1\u7AEF\u53D1\u9001\u5FC3\u8DF3\u7684\u65F6\u95F4\u95F4\u9694\uFF0C\u5355\u4F4D\u4E3A\u79D2(\u9ED8\u8BA4\u662F30\u79D2)
+#      #lease-renewal-interval-in-seconds: 1
+#      #Eureka\u670D\u52A1\u7AEF\u5728\u6536\u5230\u6700\u540E\u4E00\u6B21\u5FC3\u8DF3\u540E\u7B49\u5F85\u65F6\u95F4\u4E0A\u9650\uFF0C\u5355\u4F4D\u4E3A\u79D2(\u9ED8\u8BA4\u662F90\u79D2)\uFF0C\u8D85\u65F6\u5C06\u5254\u9664\u670D\u52A1
+#      #lease-expiration-duration-in-seconds: 2
+  #server:
+      #关闭自我保护机制，保证不可用服务被及时踢除
+      #enable-self-preservation: false
+      #eviction-interval-timer-in-ms: 2000
+
+

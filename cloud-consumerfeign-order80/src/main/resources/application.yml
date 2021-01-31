@@ -1,0 +1,39 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service
+
+
+eureka:
+  client:
+    #表示是否将自己注册进Eureka Server 默认为true
+    register-with-eureka: true
+    #表示是否从注册中心抓取已有的服务注册信息，单节点无所谓，集群必须配置为true
+    fetchRegistry: true
+    service-url:
+#      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka
+  instance:
+      #主机实例名称
+      instance-id: consumer80
+      #访问路径是否显示ip地址
+      prefer-ip-address: true
+      #EurekaClient发送心跳间隔时间，默认是30s
+#      lease-renewal-interval-in-seconds: 1
+      #EurekaService接受Client最后一次心跳的等待时间，默认90s
+#      lease-expiration-duration-in-seconds: 2
+
+# 设置feign客户端的超时控制时间
+ribbon:
+  # 建立连接所用的时间，适用于正常网络状态下，两端建立连接所用的超时时间
+  ReadTimeout: 5000
+  # 指建立连接后从服务端读取数据所用的超时时间
+  ConnectTimeout: 5000
+
+# 日志
+logging:
+  level:
+    com.itoyoung.springcloud.service.IPaymentFeignService: debug
+
