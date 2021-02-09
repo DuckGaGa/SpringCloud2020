@@ -20,6 +20,7 @@
         <module>cloud-consumerconsul-order80</module>
         <module>cloud-consumerfeign-order80</module>
         <module>cloud-consumer-hystrix-order80</module>
+        <module>cloud-consumer-hystrix-dashboard9001</module>
         <module>cloud-api-common</module>
         <module>cloud-eureka-server7001</module>
         <module>cloud-eureka-server7003</module>
